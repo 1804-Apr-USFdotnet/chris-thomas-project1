@@ -1,0 +1,38 @@
+﻿[
+  {
+    "Name": "Five Guys",
+    "Address": "Reston, VA, US, 20190",
+    "Email": "fiveguys@yum.com",
+    "PhoneNumber": "(787) 123-5555",
+    "Reviews": [
+      {
+        "Reviewer": "John Smith",
+        "Comments": "Reprehenderit elit Lorem nisi tempor aute. Aliqua ea cupidatat non cupidatat minim aute eu enim. Aliquip esse deserunt enim est est cillum adipisicing eiusmod ut amet.",
+        "Rating": "4.0"
+      },
+      {
+        "Reviewer": "Jane Doe",
+        "Comments": "Cupidatat qui sit sit non. Ullamco do nulla eu proident commodo. Excepteur mollit tempor do mollit excepteur amet minim adipisicing aliqua. Aute mollit sint in irure sunt est occaecat dolor aliquip culpa ipsum ut labore. Et officia velit ea ut velit commodo consequat occaecat ut sit deserunt eiusmod.",
+        "Rating": "0.0"
+      }
+    ]
+  },
+  {
+    "Name": "Chick-fil-A",
+    "Address": "Reston, VA, US, 20190",
+    "Email": "chickfila@yum.com",
+    "PhoneNumber": "(845) 444-2095",
+    "Reviews": [
+      {
+        "Reviewer": "",
+        "Comments": "Quis do cillum est aute exercitation sunt dolor duis et consequat deserunt elit irure adipisicing. Irure pariatur irure ut eiusmod est aliqua laborum elit laboris ad. Ipsum sunt voluptate dolore elit duis ut do reprehenderit dolore laboris. Minim occaecat sit excepteur amet ea nisi aute eu ipsum pariatur cupidatat Lorem amet sint. Commodo Lorem duis enim ullamco. Incididunt commodo officia ut tempor minim et irure velit nulla reprehenderit. Ut ullamco exercitation cillum ea fugiat aliquip fugiat Lorem.",
+        "Rating": "0.4"
+      },
+      {
+        "Reviewer": "",
+        "Comments": "Fugiat occaecat anim consequat dolore anim incididunt esse sint reprehenderit sit magna deserunt adipisicing minim. Laborum reprehenderit enim non ut. Do occaecat occaecat deserunt elit voluptate sint.",
+        "Rating": "4.4"
+      }
+    ]
+  }
+]
