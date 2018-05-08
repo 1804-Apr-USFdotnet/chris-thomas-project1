@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<RestaurantDL.Review>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Reviews";
 }
 
 <h2>All Reviews</h2>
@@ -10,8 +10,8 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<table class="table">
-    <tr><th>Reviewer:</th><th>Restaurant:</th><th>Rating:</th><th>Comments:</th></tr>
+<table class="table table-bordered table-striped" id="reviews">
+    <thead class="thead-light"><tr><th>Reviewer:</th><th>Restaurant:</th><th>Rating:</th><th>Comments:</th><th></th></tr></thead><tbody>
     @foreach (RestaurantDL.Review item in ViewBag.reviews)
     {
         <tr>
@@ -34,4 +34,5 @@
             </td>
         </tr>
     }
+</tbody>
 </table>

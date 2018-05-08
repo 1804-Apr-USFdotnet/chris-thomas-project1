@@ -34,6 +34,7 @@ namespace RestaurantPL.Controllers
 
         // POST: Restaurants/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(RestaurantBL.Restaurant rest)
         {
             try
@@ -63,6 +64,7 @@ namespace RestaurantPL.Controllers
 
         // POST: Restaurants/Edit/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, RestaurantBL.Restaurant rest)
         {
             try
@@ -94,6 +96,7 @@ namespace RestaurantPL.Controllers
 
         // POST: Restaurants/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, RestaurantBL.Restaurant rest)
         {
             try
