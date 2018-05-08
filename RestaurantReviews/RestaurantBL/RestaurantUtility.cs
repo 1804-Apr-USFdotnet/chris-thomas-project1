@@ -9,12 +9,14 @@ namespace RestaurantBL
 {
     public class RestaurantUtility
     {
-        public static string SearchRestaurant(string restaurantName)
-        {
-            List<Restaurant> restaurants = new List<Restaurant>();
-            restaurants = DButilities.GetRestaurants().ToList();
+        DButilities dbu = new DButilities();
 
-            List<Restaurant> restaurants2 = new List<Restaurant>();
+        public string SearchRestaurant(string restaurantName)
+        {
+            List<RestaurantDL.Restaurant> restaurants = new List<RestaurantDL.Restaurant>();
+            restaurants = dbu.GetRestaurants().ToList();
+
+            List<RestaurantDL.Restaurant> restaurants2 = new List<RestaurantDL.Restaurant>();
 
             foreach (var restaurant in restaurants)
             {
@@ -26,28 +28,28 @@ namespace RestaurantBL
             return JsonConvert.SerializeObject(restaurants2); //return modified list of restaurants containing restaurantName
         }
 
-        public static List<Restaurant> SortByName()
+        public List<RestaurantDL.Restaurant> SortByName()
         {
-            List<Restaurant> restaurants = new List<Restaurant>();
-            restaurants = DButilities.GetRestaurants().ToList();
+            List<RestaurantDL.Restaurant> restaurants = new List<RestaurantDL.Restaurant>();
+            restaurants = dbu.GetRestaurants().ToList();
 
             restaurants = restaurants.OrderByDescending(x => x.name).ToList();
             return restaurants;
         }
 
-        public static List<Restaurant> SortByRating()
+        public List<RestaurantDL.Restaurant> SortByRating()
         {
-            List<Restaurant> restaurants = new List<Restaurant>();
-            restaurants = DButilities.GetRestaurants().ToList();
+            List<RestaurantDL.Restaurant> restaurants = new List<RestaurantDL.Restaurant>();
+            restaurants = dbu.GetRestaurants().ToList();
 
             restaurants = restaurants.OrderByDescending(x => x.AvgRating).ToList();
             return restaurants;
         }
 
-        public static List<Restaurant> DisplayAllRestaurants()
+        public List<RestaurantDL.Restaurant> DisplayAllRestaurants()
         {
-            List<Restaurant> restaurants = new List<Restaurant>();
-            restaurants = DButilities.GetRestaurants().ToList();
+            List<RestaurantDL.Restaurant> restaurants = new List<RestaurantDL.Restaurant>();
+            restaurants = dbu.GetRestaurants().ToList();
 
             restaurants = restaurants.OrderBy(x => x.name).ToList();
             return restaurants;
@@ -70,7 +72,7 @@ namespace RestaurantBL
         {
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
             var query = from r in dbutilities.Restaurants
-                            select r;
+                        select r;
             foreach (var item in query)
             {
                 Console.WriteLine(item);
@@ -84,12 +86,61 @@ namespace RestaurantBL
             var desired = Console.ReadLine();
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
             var query = from r in dbutilities.Reviews
-                            where r.Restaurant.Equals(desired)
-                            select r;
+                        where r.Restaurant.Equals(desired)
+                        select r;
             foreach (var item in query)
             {
                 Console.WriteLine(item);
             }
         }
+
+        public static Restaurant ToWeb(RestaurantDL.Restaurant dataRestaurant)
+        {
+            var webRestaurant = new Restaurant()
+            {
+                id = dataRestaurant.id,
+                name = dataRestaurant.name,
+                address = dataRestaurant.address,
+                email = dataRestaurant.email,
+                phone = dataRestaurant.phone
+            };
+            return webRestaurant;
+        }
+
+        public static RestaurantDL.Restaurant ToData(Restaurant webRestaurant)
+        {
+            var dataRestaurant = new RestaurantDL.Restaurant()
+            {
+                id = webRestaurant.id,
+                name = webRestaurant.name,
+                address = webRestaurant.address,
+                email = webRestaurant.email,
+                phone = webRestaurant.phone
+            };
+            return dataRestaurant;
+        }
+
+        public void AddRestaurant(RestaurantBL.Restaurant rest)
+        {
+            dbu.AddRestaurant(ToData(rest));
+        }
+
+        public void EditRestaurant(RestaurantBL.Restaurant rest, int id)
+        {
+            dbu.EditRestaurant(ToData(rest), id);
+        }
+
+        public void DeleteRestaurant(int id)
+        {
+            dbu.DeleteRestaurant(id);
+        }
+
+        //public IEnumerable<RestaurantDL.Restaurant> GetAll()
+        //{
+        //    DButilities dbu = new DButilities();
+        //    var result = dbu.GetRestaurants();
+        //    var desired = result.Select(x => ToWeb(x));
+        //    return desired;
+        //}
     }
 }

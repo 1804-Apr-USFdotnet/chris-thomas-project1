@@ -9,7 +9,7 @@ namespace RestaurantDL
 {
     public class DButilities
     {
-        public static List<Restaurant> GetRestaurants()
+        public List<Restaurant> GetRestaurants()
         {
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
             List<Restaurant> restaurantList = dbutilities.Restaurants.ToList();
@@ -40,7 +40,7 @@ namespace RestaurantDL
             Restaurant restaurant = dbutilities.Restaurants.SingleOrDefault(x => x.name == RestaurantName);
             return restaurant.id;
         }
-        
+
         public int AddRestaurant(Restaurant r)
         {
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
@@ -99,7 +99,7 @@ namespace RestaurantDL
             dbutilities.SaveChanges();
         }
 
-        public List<Restaurant> GetRestaurantModels()
+        public IEnumerable<Restaurant> GetRestaurantModels()
         {
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
             return dbutilities.Restaurants.ToList();

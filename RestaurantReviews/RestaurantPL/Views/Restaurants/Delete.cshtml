@@ -1,4 +1,5 @@
 ﻿@model RestaurantBL.RestaurantUtility
+@model IEnumerable<RestaurantBL.RestaurantUtility>
 
 @{
     ViewBag.Title = "Delete";
@@ -10,10 +11,10 @@
 <div>
     <h4>RestaurantUtility</h4>
     <hr />
-    <dl class="dl-horizontal">
-    </dl>
+    <dl class="dl-horizontal"></dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

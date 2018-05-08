@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RestaurantBL;
+using RestaurantDL;
 
 namespace RestaurantPL.Controllers
 {
     public class RestaurantsController : Controller
     {
+        RestaurantUtility restaurant = new RestaurantUtility();
+        DButilities dbutilities = new DButilities();
+
         // GET: Restaurants
         public ActionResult Index()
         {
+            ViewBag.restaurants = dbutilities.GetRestaurants();
             return View();
         }
 
@@ -28,13 +34,20 @@ namespace RestaurantPL.Controllers
 
         // POST: Restaurants/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(RestaurantBL.Restaurant rest)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if(ModelState.IsValid)
+                {
+                    //business logic
+                    restaurant.AddRestaurant(rest);
+                    return RedirectToAction("Index");
+                } else
+                {
+                    return View(restaurant);
+                }
             }
             catch
             {
@@ -50,12 +63,21 @@ namespace RestaurantPL.Controllers
 
         // POST: Restaurants/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, RestaurantBL.Restaurant rest)
         {
             try
             {
                 // TODO: Add update logic here
-
+                if (ModelState.IsValid)
+                {
+                    //business logic
+                    restaurant.EditRestaurant(rest, id);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(restaurant);
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -72,12 +94,21 @@ namespace RestaurantPL.Controllers
 
         // POST: Restaurants/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, RestaurantBL.Restaurant rest)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                if (ModelState.IsValid)
+                {
+                    //business logic
+                    restaurant.EditRestaurant(rest, id);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(restaurant);
+                }
                 return RedirectToAction("Index");
             }
             catch
