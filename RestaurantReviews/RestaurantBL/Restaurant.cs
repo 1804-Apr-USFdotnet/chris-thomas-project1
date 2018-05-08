@@ -14,8 +14,14 @@ namespace RestaurantBL
         [Required]
         [StringLength(20, ErrorMessage = "No names longer than 20 characters")]
         public string name { get; set; }
+        [Required]
+        [StringLength(30, ErrorMessage = "No longer than 30 characters")]
         public string address { get; set; }
+        [Required]
+        [StringLength(30, ErrorMessage = "No longer than 30 characters")]
         public string email { get; set; }
+        [Required]
+        [StringLength(11, ErrorMessage = "No longer than 11 characters")]
         public string phone { get; set; }
         public double AvgRating { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
