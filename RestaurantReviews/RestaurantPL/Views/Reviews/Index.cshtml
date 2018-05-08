@@ -1,27 +1,37 @@
-﻿@model IEnumerable<RestaurantBL.RestaurantUtility>
+﻿@model IEnumerable<RestaurantDL.Review>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>All Reviews</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
 <table class="table">
-    <tr>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
+    <tr><th>Reviewer:</th><th>Restaurant:</th><th>Rating:</th><th>Comments:</th></tr>
+    @foreach (RestaurantDL.Review item in ViewBag.reviews)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.reviewer, "Details", new { id = item.id })
+            </td>
+            <td>
+                @item.Restaurant.name
+            </td>
+            <td>
+                @item.rating
+            </td>
+            <td>
+                @item.comments
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 </table>

@@ -27,7 +27,7 @@ namespace RestaurantDL
             return restaurantList;
         }
 
-        public static List<Review> GetAllReviews(int RestaurantId)
+        public List<Review> GetAllReviews(int RestaurantId)
         {
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
             Restaurant restaurant = dbutilities.Restaurants.SingleOrDefault(x => x.id == RestaurantId);

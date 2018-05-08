@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RestaurantBL;
+using RestaurantDL;
 
 namespace RestaurantPL.Controllers
 {
     public class ReviewsController : Controller
     {
+        RestaurantUtility reviews = new RestaurantUtility();
+        DButilities dbutilities = new DButilities();
+
         // GET: Reviews
         public ActionResult Index()
         {
+            int id = 1;
+            ViewBag.reviews = dbutilities.GetAllReviews(id);
             return View();
         }
 

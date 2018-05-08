@@ -135,6 +135,47 @@ namespace RestaurantBL
             dbu.DeleteRestaurant(id);
         }
 
+        public static Review ToWeb(RestaurantDL.Review dataReview)
+        {
+            var webReview = new Review()
+            {
+                id = dataReview.id,
+                restaurantId = (int)dataReview.restaurantId,
+                reviewer = dataReview.reviewer,
+                comments = dataReview.comments,
+                rating = (double)dataReview.rating
+            };
+            return webReview;
+        }
+
+        public static RestaurantDL.Review ToData(Review webReview)
+        {
+            var dataReview = new RestaurantDL.Review()
+            {
+                id = webReview.id,
+                restaurantId = (int)webReview.restaurantId,
+                reviewer = webReview.reviewer,
+                comments = webReview.comments,
+                rating = (double)webReview.rating
+            };
+            return dataReview;
+        }
+
+        public void AddReview(RestaurantBL.Review rev)
+        {
+            dbu.AddReview(ToData(rev));
+        }
+
+        public void EditReview(RestaurantBL.Review rev, int id)
+        {
+            dbu.EditReview(ToData(rev), id);
+        }
+
+        public void DeleteReview(int id)
+        {
+            dbu.DeleteReview(id);
+        }
+
         //public IEnumerable<RestaurantDL.Restaurant> GetAll()
         //{
         //    DButilities dbu = new DButilities();

@@ -1,18 +1,27 @@
-﻿@model RestaurantBL.RestaurantUtility
-@model IEnumerable<RestaurantBL.RestaurantUtility>
-
+﻿@model RestaurantBL.Restaurant
 @{
     ViewBag.Title = "Details";
 }
-
 <h2>Details</h2>
-
 <div>
-    <h4>RestaurantUtility</h4>
+    <h4>Restaurant Details</h4>
     <hr />
-    <dl class="dl-horizontal"></dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+        <dt>
+            @Html.DisplayFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+    </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
