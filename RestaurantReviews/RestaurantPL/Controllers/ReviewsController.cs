@@ -15,8 +15,9 @@ namespace RestaurantPL.Controllers
         DButilities dbutilities = new DButilities();
 
         // GET: Reviews
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
+            int id = 1;
             ViewBag.reviews = dbutilities.GetAllReviews(id);
             return View();
         }
@@ -24,7 +25,7 @@ namespace RestaurantPL.Controllers
         // GET: Reviews/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(dbutilities.GetAllReviews(id));
         }
 
         // GET: Reviews/Create

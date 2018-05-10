@@ -11,12 +11,10 @@
         </div>
     </div>
 </div>
-
+<h2 class="text-center">Top 3 Restaurants</h2><hr />
+<div class="row">
 @foreach(var item in Model)
 {
-    <div class="card">
-        <div class="card-body">
-            <h1>@item.name</h1>
-        </div>
-    </div>
+<div class="col-sm-4"><h3>@item.name</h3><b>Average Rating:</b> @item.AvgRating</div>
 }
+</div>

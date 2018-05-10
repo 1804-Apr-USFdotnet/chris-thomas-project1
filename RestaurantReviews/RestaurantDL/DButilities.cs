@@ -32,7 +32,7 @@ namespace RestaurantDL
         public List<Review> GetAllReviews(int RestaurantId)
         {
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
-            Restaurant restaurant = dbutilities.Restaurants.SingleOrDefault(x => x.id == RestaurantId);
+            Restaurant restaurant = dbutilities.Restaurants.Find(RestaurantId);
             return restaurant.Reviews.ToList();
         }
 

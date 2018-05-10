@@ -9,48 +9,38 @@
 <div>
     <h4>Restaurant</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <table>
+        <tr><th>
             @Html.DisplayNameFor(model => model.name)
-        </dt>
-
-        <dd>
+        </th>
+        <td>
             @Html.DisplayFor(model => model.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AvgRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AvgRating)
-        </dd>
-
-    </dl>
+        </td></tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.address)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.email)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.phone)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.phone)
+            </td>
+        </tr>
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
