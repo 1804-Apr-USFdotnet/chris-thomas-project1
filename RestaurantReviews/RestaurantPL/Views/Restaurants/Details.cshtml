@@ -57,8 +57,18 @@
     @Html.ActionLink("Delete", "Delete", new { id = Model.id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-
-@foreach(var item in Model.Reviews)
-{
-    @item.reviewer <br/>
-}
+<div class="row">
+    @foreach (var item in Model.Reviews)
+    {
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5><b>Reviewer's Name:</b> @item.reviewer</h5><hr />
+                    <h5><b>Rating:</b> @item.rating</h5><hr />
+                    <h5><b>Comments:</b> @item.comments</h5>
+                </div>
+            </div>
+        </div>
+        <br />
+    }
+</div>

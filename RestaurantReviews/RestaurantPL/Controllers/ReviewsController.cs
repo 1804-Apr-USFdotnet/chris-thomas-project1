@@ -5,18 +5,18 @@ using System.Web;
 using System.Web.Mvc;
 using RestaurantBusiness;
 using RestaurantDL;
+using NLog;
 
 namespace RestaurantPL.Controllers
 {
     public class ReviewsController : Controller
     {
-        RestaurantUtility reviews = new RestaurantUtility();
+        RestaurantUtility revutility = new RestaurantUtility();
         DButilities dbutilities = new DButilities();
 
         // GET: Reviews
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            int id = 1;
             ViewBag.reviews = dbutilities.GetAllReviews(id);
             return View();
         }
@@ -49,23 +49,31 @@ namespace RestaurantPL.Controllers
             }
         }
 
-        // GET: Reviews/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(dbutilities.GetAllReviews(id));
         }
 
-        // POST: Reviews/Edit/5
+        // POST: Restaurants/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, RestaurantBusiness.Review rest)
         {
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    //business logic
+                    revutility.EditReview(rest, id);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(revutility);
+                }
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }
