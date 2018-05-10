@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<RestaurantDL.Restaurant>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -10,3 +11,12 @@
         </div>
     </div>
 </div>
+
+@foreach(var item in Model)
+{
+<div class="card">
+    <div class="card-body">
+        <h1>@item.name</h1>
+    </div>
+</div>
+}

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using RestaurantBL;
+using RestaurantBusiness;
 using RestaurantDL;
+using NLog;
 
 namespace RestaurantPL.Controllers
 {
     public class RestaurantsController : Controller
     {
-        RestaurantUtility restaurant = new RestaurantUtility();
+        RestaurantUtility rutility = new RestaurantUtility();
         DButilities dbutilities = new DButilities();
 
         // GET: Restaurants
@@ -23,7 +24,7 @@ namespace RestaurantPL.Controllers
         // GET: Restaurants/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(rutility.GetRestaurant(id));
         }
 
         // GET: Restaurants/Create
@@ -35,7 +36,7 @@ namespace RestaurantPL.Controllers
         // POST: Restaurants/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RestaurantBL.Restaurant rest)
+        public ActionResult Create(RestaurantBusiness.Restaurant rest)
         {
             try
             {
@@ -43,11 +44,11 @@ namespace RestaurantPL.Controllers
                 if(ModelState.IsValid)
                 {
                     //business logic
-                    restaurant.AddRestaurant(rest);
+                    rutility.AddRestaurant(rest);
                     return RedirectToAction("Index");
                 } else
                 {
-                    return View(restaurant);
+                    return View(rutility);
                 }
             }
             catch
@@ -59,13 +60,13 @@ namespace RestaurantPL.Controllers
         // GET: Restaurants/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(rutility.GetRestaurant(id));
         }
 
         // POST: Restaurants/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, RestaurantBL.Restaurant rest)
+        public ActionResult Edit(int id, RestaurantBusiness.Restaurant rest)
         {
             try
             {
@@ -73,16 +74,15 @@ namespace RestaurantPL.Controllers
                 if (ModelState.IsValid)
                 {
                     //business logic
-                    restaurant.EditRestaurant(rest, id);
+                    rutility.EditRestaurant(rest, id);
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    return View(restaurant);
+                    return View(rutility);
                 }
-                return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
             }
@@ -91,27 +91,18 @@ namespace RestaurantPL.Controllers
         // GET: Restaurants/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(rutility.GetRestaurant(id));
         }
 
         // POST: Restaurants/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, RestaurantBL.Restaurant rest)
+        public ActionResult Delete(int id, RestaurantBusiness.Restaurant rest)
         {
             try
             {
                 // TODO: Add delete logic here
-                if (ModelState.IsValid)
-                {
-                    //business logic
-                    restaurant.EditRestaurant(rest, id);
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return View(restaurant);
-                }
+                rutility.DeleteRestaurant(id);
                 return RedirectToAction("Index");
             }
             catch

@@ -16,7 +16,7 @@ namespace RestaurantTest
         [TestMethod]
         public void TestMethod1()
         {
-            Restaurant rest = new Restaurant();
+            RestaurantDL.Restaurant rest = new RestaurantDL.Restaurant();
             string actual = rest.name = "Five Guys";
             string expected = rest.name;
             Assert.AreEqual(actual, expected);

@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RestaurantBusiness;
 
 namespace RestaurantPL.Controllers
 {
     public class HomeController : Controller
     {
+        RestaurantUtility rutility = new RestaurantUtility();
+
         public ActionResult Index()
         {
-            return View();
+            return View(rutility.DisplayTop3());
         }
 
         public ActionResult About()

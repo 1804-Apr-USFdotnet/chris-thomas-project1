@@ -250,16 +250,16 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Restaurants\Index.cshtml" />
-    <Content Include="Views\Restaurants\Details.cshtml" />
-    <Content Include="Views\Restaurants\Create.cshtml" />
-    <Content Include="Views\Restaurants\Edit.cshtml" />
-    <Content Include="Views\Restaurants\Delete.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />
     <Content Include="Views\Reviews\Details.cshtml" />
     <Content Include="Views\Reviews\Create.cshtml" />
     <Content Include="Views\Reviews\Edit.cshtml" />
     <Content Include="Views\Reviews\Delete.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Restaurants\Create.cshtml" />
+    <Content Include="Views\Restaurants\Details.cshtml" />
+    <Content Include="Views\Restaurants\Edit.cshtml" />
+    <Content Include="Views\Restaurants\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -277,9 +277,9 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RestaurantBL\RestaurantBL.csproj">
-      <Project>{77cddd9f-7551-47a0-8377-3dc800ab4923}</Project>
-      <Name>RestaurantBL</Name>
+    <ProjectReference Include="..\RestaurantBusiness\RestaurantBusiness.csproj">
+      <Project>{2f9e851b-7c65-48de-b457-54aa5895b538}</Project>
+      <Name>RestaurantBusiness</Name>
     </ProjectReference>
     <ProjectReference Include="..\RestaurantDL\RestaurantDL.csproj">
       <Project>{b5cc7849-966a-4e4a-95a9-358d9c1442a0}</Project>

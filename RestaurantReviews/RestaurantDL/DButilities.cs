@@ -9,6 +9,8 @@ namespace RestaurantDL
 {
     public class DButilities
     {
+        RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
+
         public List<Restaurant> GetRestaurants()
         {
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
@@ -34,11 +36,17 @@ namespace RestaurantDL
             return restaurant.Reviews.ToList();
         }
 
-        public static int GetRestaurantId(string RestaurantName)
+        public int GetRestaurantId(string RestaurantName)
         {
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
             Restaurant restaurant = dbutilities.Restaurants.SingleOrDefault(x => x.name == RestaurantName);
             return restaurant.id;
+        }
+
+        public Restaurant GetRestaurantById(int id)
+        {
+            Restaurant restaurant = dbutilities.Restaurants.SingleOrDefault(x => x.id == id);
+            return restaurant;
         }
 
         public int AddRestaurant(Restaurant r)
@@ -52,9 +60,12 @@ namespace RestaurantDL
         public void EditRestaurant(Restaurant restaurant, int restaurantId)
         {
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
-            Restaurant rest = GetRestaurantModels().SingleOrDefault(x => x.id == restaurantId);
+            //Restaurant rest = GetRestaurantModels().SingleOrDefault(x => x.id == restaurantId);
+            Restaurant rest = dbutilities.Restaurants.Find(restaurantId);
             rest.name = restaurant.name;
             rest.address = restaurant.address;
+            rest.email = restaurant.email;
+            rest.phone = restaurant.phone;
 
             dbutilities.Restaurants.Attach(rest);
             dbutilities.Entry(rest).State = EntityState.Modified;
@@ -64,10 +75,15 @@ namespace RestaurantDL
         public void DeleteRestaurant(int id)
         {
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
-            Restaurant r = GetRestaurantModels().SingleOrDefault(x => x.id == id);
-            dbutilities.Restaurants.Attach(r);
-            dbutilities.Restaurants.Remove(r);
-            dbutilities.SaveChanges();
+            try
+            {
+                Restaurant r = dbutilities.Restaurants.Find(id);
+                dbutilities.Restaurants.Remove(r);
+                dbutilities.SaveChanges();
+            } catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public int AddReview(Review review)
