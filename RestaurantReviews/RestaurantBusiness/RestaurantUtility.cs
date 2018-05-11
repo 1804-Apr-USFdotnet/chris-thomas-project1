@@ -10,7 +10,7 @@ namespace RestaurantBusiness
 {
     public class RestaurantUtility
     {
-        DButilities dbu = new DButilities();
+        private DButilities dbu = new DButilities();
 
         public string SearchRestaurant(string restaurantName)
         {
@@ -106,6 +106,7 @@ namespace RestaurantBusiness
         }
 
         public static Restaurant ToWeb(RestaurantDL.Restaurant dataRestaurant)
+
         {
             var webRestaurant = new Restaurant()
             {
@@ -113,8 +114,9 @@ namespace RestaurantBusiness
                 name = dataRestaurant.name,
                 address = dataRestaurant.address,
                 email = dataRestaurant.email,
-                phone = dataRestaurant.phone,
-                Reviews = ToWeb(dataRestaurant.Reviews)
+                phone = dataRestaurant.phone
+                //This causes a stack overflow exception!!!
+                //Reviews = ToWeb(dataRestaurant.Reviews)
             };
             return webRestaurant;
         }
@@ -147,9 +149,10 @@ namespace RestaurantBusiness
             dbu.AddRestaurant(ToData(rest));
         }
 
-        public Restaurant GetRestaurant(int id)
+        public RestaurantBusiness.Restaurant GetRestaurant(int id)
         {
-            return ToWeb(dbu.GetRestaurantById(id));
+            var r = dbu.GetRestaurantById(id);
+            return ToWeb(r);
         }
 
         public void EditRestaurant(RestaurantBusiness.Restaurant rest, int id)
@@ -168,6 +171,7 @@ namespace RestaurantBusiness
             {
                 id = dataReview.id,
                 restaurantId = (int)dataReview.restaurantId,
+                Restaurant = ToWeb(dataReview.Restaurant),
                 reviewer = dataReview.reviewer,
                 comments = dataReview.comments,
                 rating = (double)dataReview.rating
@@ -205,7 +209,24 @@ namespace RestaurantBusiness
 
         public List<RestaurantBusiness.Restaurant> GetRestaurants()
         {
-            return dbu.GetRestaurants().Select(x => ToWeb(x)).ToList();
+            List<Restaurant> rs = new List<Restaurant>();
+            foreach(var rest in dbu.GetRestaurants())
+            {
+                var newRest = ToWeb(rest);
+                rs.Add(newRest);
+            }
+            //return dbu.GetRestaurants().Select(x => ToWeb(x)).ToList();
+            return rs;
+        }
+
+        public List<Review> GetAllReviews(int id)
+        {
+            return dbu.GetAllReviews(id).Select(x => ToWeb(x)).ToList();
+        }
+
+        public List<Review> GetAllReviews()
+        {
+            return dbu.GetAllReviews().Select(x => ToWeb(x)).ToList();
         }
         //public IEnumerable<RestaurantDL.Restaurant> GetAll()
         //{

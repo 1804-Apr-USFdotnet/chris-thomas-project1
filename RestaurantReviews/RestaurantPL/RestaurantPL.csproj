@@ -197,7 +197,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
@@ -281,6 +281,13 @@
       <Project>{2f9e851b-7c65-48de-b457-54aa5895b538}</Project>
       <Name>RestaurantBusiness</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RestaurantDL\RestaurantDL.csproj">
+      <Project>{b5cc7849-966a-4e4a-95a9-358d9c1442a0}</Project>
+      <Name>RestaurantDL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

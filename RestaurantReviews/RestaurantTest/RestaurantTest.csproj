@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
@@ -76,10 +76,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RestaurantBL\RestaurantBL.csproj">
-      <Project>{77cddd9f-7551-47a0-8377-3dc800ab4923}</Project>
-      <Name>RestaurantBL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RestaurantDL\RestaurantDL.csproj">
       <Project>{b5cc7849-966a-4e4a-95a9-358d9c1442a0}</Project>
       <Name>RestaurantDL</Name>

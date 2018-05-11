@@ -1,4 +1,4 @@
-﻿@model RestaurantBusiness.Review
+﻿@model IEnumerable<RestaurantBusiness.Review>
 
 @{
     ViewBag.Title = "Details";
@@ -9,40 +9,47 @@
 <div>
     <h4>Review</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.restaurantId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.restaurantId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.reviewer)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.reviewer)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.comments)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.comments)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.rating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.rating)
-        </dd>
-
-    </dl>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.reviewer)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.reviewer)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.rating)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.rating)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.comments)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.comments)
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="row">
+    @foreach (var item in Model.Reviews)
+    {
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5><b>Reviewer's Name:</b> @item.reviewer</h5><hr />
+                    <h5><b>Rating:</b> @item.rating</h5><hr />
+                    <h5><b>Comments:</b> @item.comments</h5>
+                </div>
+            </div>
+        </div>
+        <br />
+    }
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |

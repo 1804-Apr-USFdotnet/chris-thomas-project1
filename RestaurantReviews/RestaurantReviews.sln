@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantDL", "RestaurantDL\RestaurantDL.csproj", "{B5CC7849-966A-4E4A-95A9-358D9C1442A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantBL", "RestaurantBL\RestaurantBL.csproj", "{77CDDD9F-7551-47A0-8377-3DC800AB4923}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantTest", "RestaurantTest\RestaurantTest.csproj", "{FCB65ACD-8B9E-4C98-80CF-CA9C18698524}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantPL", "RestaurantPL\RestaurantPL.csproj", "{60630AD8-C998-4920-9F9C-8A297A6B2F9A}"
@@ -26,10 +24,6 @@ Global
 		{B5CC7849-966A-4E4A-95A9-358D9C1442A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5CC7849-966A-4E4A-95A9-358D9C1442A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5CC7849-966A-4E4A-95A9-358D9C1442A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77CDDD9F-7551-47A0-8377-3DC800AB4923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77CDDD9F-7551-47A0-8377-3DC800AB4923}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77CDDD9F-7551-47A0-8377-3DC800AB4923}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77CDDD9F-7551-47A0-8377-3DC800AB4923}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FCB65ACD-8B9E-4C98-80CF-CA9C18698524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FCB65ACD-8B9E-4C98-80CF-CA9C18698524}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCB65ACD-8B9E-4C98-80CF-CA9C18698524}.Release|Any CPU.ActiveCfg = Release|Any CPU

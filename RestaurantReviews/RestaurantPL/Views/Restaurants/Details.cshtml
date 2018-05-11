@@ -10,12 +10,14 @@
     <h4>Restaurant</h4>
     <hr />
     <table>
-        <tr><th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <td>
-            @Html.DisplayFor(model => model.name)
-        </td></tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.name)
+            </td>
+        </tr>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.address)
@@ -43,7 +45,7 @@
     </table>
 </div>
 <div class="row">
-    @foreach (var item in Model.Reviews)
+    @foreach (var item in ViewBag.reviews)
     {
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">
@@ -60,5 +62,6 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Delete", "Delete", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Create Review", "Create", "Reviews")
 </p>

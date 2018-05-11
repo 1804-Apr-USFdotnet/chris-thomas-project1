@@ -10,7 +10,14 @@ namespace RestaurantPL.Controllers
 {
     public class RestaurantsController : Controller
     {
-        RestaurantUtility rutility = new RestaurantUtility();
+        RestaurantUtility rutility;
+
+        private Logger log;
+
+        public RestaurantsController()
+        {
+            rutility = new RestaurantUtility();
+        }
 
         // GET: Restaurants
         public ActionResult Index()
@@ -22,6 +29,9 @@ namespace RestaurantPL.Controllers
         // GET: Restaurants/Details/5
         public ActionResult Details(int id)
         {
+            var r = rutility.GetRestaurant(id);
+            ViewBag.reviews = rutility.GetAllReviews(id);
+            //return View(rutility.GetRestaurant(id));
             return View(rutility.GetRestaurant(id));
         }
 
@@ -51,15 +61,16 @@ namespace RestaurantPL.Controllers
             }
             catch
             {
+                log = LogManager.GetLogger("errors");
                 return View();
             }
         }
 
         // GET: Restaurants/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    //return View(rutility.GetRestaurant(id));
-        //}
+        public ActionResult Edit(int id)
+        {
+            return View(rutility.GetRestaurant(id));
+        }
 
         // POST: Restaurants/Edit/5
         [HttpPost]
@@ -77,6 +88,7 @@ namespace RestaurantPL.Controllers
                 }
                 else
                 {
+                    log = LogManager.GetLogger("errors");
                     return View(rutility);
                 }
             }
@@ -87,10 +99,10 @@ namespace RestaurantPL.Controllers
         }
 
         // GET: Restaurants/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View(rutility.GetRestaurant(id));
-        //}
+        public ActionResult Delete(int id)
+        {
+            return View(rutility.GetRestaurant(id));
+        }
 
         // POST: Restaurants/Delete/5
         [HttpPost]
@@ -103,8 +115,10 @@ namespace RestaurantPL.Controllers
                 rutility.DeleteRestaurant(id);
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception e)
             {
+                log = LogManager.GetLogger("errors");
+                log.Error($"[Restaurants Controller] [Details] Exception thrown: {e.Message}");
                 return View();
             }
         }
