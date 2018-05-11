@@ -56,6 +56,11 @@ namespace RestaurantBusiness
             return restaurants;
         }
 
+        public List<Review> AvgRating(List<Review> ratings)
+        {
+            return ratings.OrderByDescending(r => r.rating).ToList();
+        }
+
         public List<RestaurantDL.Restaurant> DisplayAllRestaurants()
         {
             List<RestaurantDL.Restaurant> restaurants = new List<RestaurantDL.Restaurant>();
@@ -73,9 +78,7 @@ namespace RestaurantBusiness
             //             select r).Take(3);
             //Console.WriteLine("Here are the top 3 Restaurants:");
 
-
             var topthree = dbutilities.GetRestaurants().OrderByDescending(x => x.AvgRating).Take(3);
-            
             return topthree.ToList();
         }
 
@@ -91,22 +94,12 @@ namespace RestaurantBusiness
             return restaurant;
         }
 
-        public void DisplayReviews<T>(List<T> review)
+        public RestaurantDL.Review DisplayReview(int id)
         {
-            Console.WriteLine("Which reviews would you like to see: ");
-            var desired = Console.ReadLine();
-            RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();
-            var query = from r in dbutilities.Reviews
-                        where r.Restaurant.Equals(desired)
-                        select r;
-            foreach (var item in query)
-            {
-                Console.WriteLine(item);
-            }
+            return dbu.DisplayReviewById(id);
         }
 
         public static Restaurant ToWeb(RestaurantDL.Restaurant dataRestaurant)
-
         {
             var webRestaurant = new Restaurant()
             {

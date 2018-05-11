@@ -52,7 +52,9 @@
                 <div class="card-body">
                     <h5><b>Reviewer's Name:</b> @item.reviewer</h5><hr />
                     <h5><b>Rating:</b> @item.rating</h5><hr />
-                    <h5><b>Comments:</b> @item.comments</h5>
+                    <h5><b>Comments:</b> @item.comments</h5><hr />
+                    @Html.ActionLink("Edit", "Edit", "Reviews", new { id = Model.id }, null) | 
+                    @Html.ActionLink("Delete", "Delete", "Reviews", new { id = Model.id }, null)
                 </div>
             </div>
         </div>

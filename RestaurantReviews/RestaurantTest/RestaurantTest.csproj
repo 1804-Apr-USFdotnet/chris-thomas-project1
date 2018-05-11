@@ -62,7 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FakeRestaurant.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,6 +75,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RestaurantBusiness\RestaurantBusiness.csproj">
+      <Project>{2f9e851b-7c65-48de-b457-54aa5895b538}</Project>
+      <Name>RestaurantBusiness</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RestaurantDL\RestaurantDL.csproj">
       <Project>{b5cc7849-966a-4e4a-95a9-358d9c1442a0}</Project>
       <Name>RestaurantDL</Name>

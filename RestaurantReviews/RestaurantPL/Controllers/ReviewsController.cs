@@ -24,6 +24,9 @@ namespace RestaurantPL.Controllers
         // GET: Reviews/Details/5
         public ActionResult Details(int id)
         {
+            //var bl = new RestaurantBusiness.RestaurantUtility();
+            //var x = bl.DisplayReview(id);
+            //return View(x);
             return RedirectToAction("Details", "Restaurants", new { id = id });
         }
 
@@ -105,6 +108,8 @@ namespace RestaurantPL.Controllers
             try
             {
                 // TODO: Add delete logic here
+                RestaurantDL.Review reviewToDelete = new RestaurantDL.Review();
+                reviewToDelete = revutility.DisplayReview(id);
                 revutility.DeleteReview(id);
                 return RedirectToAction("Index");
             }

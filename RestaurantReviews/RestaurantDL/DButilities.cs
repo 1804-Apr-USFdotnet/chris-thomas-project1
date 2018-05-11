@@ -41,6 +41,12 @@ namespace RestaurantDL
             return dbutilities.Reviews.ToList();
         }
 
+        public Review DisplayReviewById(int id)
+        {
+            var review = dbutilities.Reviews.Find(id);
+            return review;
+        }
+
         public int GetRestaurantId(string RestaurantName)
         {
             RestaurantsDbEntities dbutilities = new RestaurantsDbEntities();

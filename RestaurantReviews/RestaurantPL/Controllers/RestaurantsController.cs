@@ -23,6 +23,7 @@ namespace RestaurantPL.Controllers
         public ActionResult Index()
         {
             ViewBag.restaurants = rutility.GetRestaurants();
+            //ViewBag.avgRatings = rutility.AvgRating(id);
             return View();
         }
 

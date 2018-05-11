@@ -1,0 +1,7 @@
+2018-05-11 08:23:24.4117 ERROR [Restaurants Controller] [Details] Exception thrown: An error occurred while updating the entries. See the inner exception for details.
+2018-05-11 08:23:44.7427 ERROR [Restaurants Controller] [Details] Exception thrown: An error occurred while updating the entries. See the inner exception for details.
+2018-05-11 09:43:34.0078 ERROR [Restaurants Controller] [Details] Exception thrown: An error occurred while updating the entries. See the inner exception for details.
+2018-05-11 09:43:40.7388 ERROR [Restaurants Controller] [Details] Exception thrown: An error occurred while updating the entries. See the inner exception for details.
+2018-05-11 09:43:48.8828 ERROR [Restaurants Controller] [Details] Exception thrown: An error occurred while updating the entries. See the inner exception for details.
+2018-05-11 09:44:00.6009 ERROR [Restaurants Controller] [Details] Exception thrown: An error occurred while updating the entries. See the inner exception for details.
+2018-05-11 09:44:22.5638 ERROR [Restaurants Controller] [Details] Exception thrown: An error occurred while updating the entries. See the inner exception for details.
