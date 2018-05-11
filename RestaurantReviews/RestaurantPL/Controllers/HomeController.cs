@@ -11,10 +11,10 @@ namespace RestaurantPL.Controllers
     {
         RestaurantUtility rutility = new RestaurantUtility();
 
-        public ActionResult Index()
-        {
-            return View(rutility.DisplayTop3());
-        }
+        //public ActionResult Index()
+        //{
+        //    //return View(rutility.DisplayTop3());
+        //}
 
         public ActionResult About()
         {

@@ -38,7 +38,16 @@ namespace RestaurantBusiness
             return restaurants;
         }
 
-        public List<RestaurantDL.Restaurant> SortByRating()
+        public List<RestaurantDL.Restaurant> SortByRatingAsc()
+        {
+            List<RestaurantDL.Restaurant> restaurants = new List<RestaurantDL.Restaurant>();
+            restaurants = dbu.GetRestaurants().ToList();
+
+            restaurants = restaurants.OrderBy(x => x.AvgRating).ToList();
+            return restaurants;
+        }
+
+        public List<RestaurantDL.Restaurant> SortByRatingDesc()
         {
             List<RestaurantDL.Restaurant> restaurants = new List<RestaurantDL.Restaurant>();
             restaurants = dbu.GetRestaurants().ToList();
@@ -194,6 +203,10 @@ namespace RestaurantBusiness
             dbu.DeleteReview(id);
         }
 
+        public List<RestaurantBusiness.Restaurant> GetRestaurants()
+        {
+            return dbu.GetRestaurants().Select(x => ToWeb(x)).ToList();
+        }
         //public IEnumerable<RestaurantDL.Restaurant> GetAll()
         //{
         //    DButilities dbu = new DButilities();

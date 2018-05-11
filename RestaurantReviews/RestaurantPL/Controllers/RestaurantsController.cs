@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RestaurantBusiness;
-using RestaurantDL;
 using NLog;
 
 namespace RestaurantPL.Controllers
@@ -12,12 +11,11 @@ namespace RestaurantPL.Controllers
     public class RestaurantsController : Controller
     {
         RestaurantUtility rutility = new RestaurantUtility();
-        DButilities dbutilities = new DButilities();
 
         // GET: Restaurants
         public ActionResult Index()
         {
-            ViewBag.restaurants = dbutilities.GetRestaurants();
+            ViewBag.restaurants = rutility.GetRestaurants();
             return View();
         }
 
@@ -58,10 +56,10 @@ namespace RestaurantPL.Controllers
         }
 
         // GET: Restaurants/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View(rutility.GetRestaurant(id));
-        }
+        //public ActionResult Edit(int id)
+        //{
+        //    //return View(rutility.GetRestaurant(id));
+        //}
 
         // POST: Restaurants/Edit/5
         [HttpPost]
@@ -75,24 +73,24 @@ namespace RestaurantPL.Controllers
                 {
                     //business logic
                     rutility.EditRestaurant(rest, id);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details", new { id = id });
                 }
                 else
                 {
                     return View(rutility);
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return View();
             }
         }
 
         // GET: Restaurants/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View(rutility.GetRestaurant(id));
-        }
+        //public ActionResult Delete(int id)
+        //{
+        //    return View(rutility.GetRestaurant(id));
+        //}
 
         // POST: Restaurants/Delete/5
         [HttpPost]
@@ -110,5 +108,20 @@ namespace RestaurantPL.Controllers
                 return View();
             }
         }
+
+        public ActionResult SortByRatingAsc()
+        {
+            return View();
+        }
+
+        public ActionResult SortByRatingDesc()
+        {
+            return View();
+        }
+
+        //public ActionResult SortByName()
+        //{
+        //    return View(rutility.SortByName());
+        //}
     }
 }

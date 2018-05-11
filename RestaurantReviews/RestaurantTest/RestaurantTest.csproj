@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeRestaurant.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -82,6 +83,10 @@
     <ProjectReference Include="..\RestaurantDL\RestaurantDL.csproj">
       <Project>{b5cc7849-966a-4e4a-95a9-358d9c1442a0}</Project>
       <Name>RestaurantDL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RestaurantPL\RestaurantPL.csproj">
+      <Project>{60630ad8-c998-4920-9f9c-8a297a6b2f9a}</Project>
+      <Name>RestaurantPL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RestaurantDL.Restaurant>
+﻿@model IEnumerable<RestaurantBusiness.Restaurant>
 
 @{
     ViewBag.Title = "Restaurants";
@@ -11,8 +11,8 @@
 </p>
 
 <table class="table table-bordered table-striped" id="restaurants">
-    <thead class="thead-light"><tr><th>Name:</th><th>Address:</th><th>Email:</th><th>Phone:</th><th></th></tr></thead><tbody>
-    @foreach (RestaurantDL.Restaurant item in ViewBag.restaurants)
+    <thead class="thead-light"><tr><th>Name:</th><th>Address:</th><th>Email:</th><th>Phone:</th><th>Average Rating:</th><th></th></tr></thead><tbody>
+    @foreach (RestaurantBusiness.Restaurant item in ViewBag.restaurants)
     {
         <tr>
             <td>
@@ -28,7 +28,14 @@
                 @item.phone
             </td>
             <td>
-                @Html.ActionLink("Reviews", "Details", "Reviews")
+                @if (!double.IsNaN(item.AvgRating))
+                {
+                    @item.AvgRating
+                }
+                else {}
+            </td>
+            <td>
+                @Html.ActionLink("Reviews", "Index", "Reviews", new { id = @item.id })
             </td>
         </tr>
     }

@@ -13,21 +13,21 @@ namespace RestaurantBusiness
         public int id { get; set; }
         [Required]
         [StringLength(20, ErrorMessage = "No names longer than 20 characters")]
-        [Display(Name = "Restaurant's Name:")]
+        [Display(Name = "Restaurant")]
         public string name { get; set; }
         [Required]
         [StringLength(30, ErrorMessage = "No longer than 30 characters")]
-        [Display(Name = "Address:")]
+        [Display(Name = "Address")]
         public string address { get; set; }
         [Required]
         [StringLength(30, ErrorMessage = "No longer than 30 characters")]
-        [Display(Name = "Email:")]
+        [Display(Name = "Email")]
         public string email { get; set; }
         [Required]
         [StringLength(11, ErrorMessage = "No longer than 11 characters")]
-        [Display(Name = "Phone:")]
+        [Display(Name = "Phone")]
         public string phone { get; set; }
-        [Display(Name = "Average Rating:")]
+        [Display(Name = "Average Rating")]
         public double AvgRating { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
     }

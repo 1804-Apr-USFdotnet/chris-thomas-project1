@@ -42,11 +42,6 @@
         </tr>
     </table>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
 <div class="row">
     @foreach (var item in Model.Reviews)
     {
@@ -62,3 +57,8 @@
         <br />
     }
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

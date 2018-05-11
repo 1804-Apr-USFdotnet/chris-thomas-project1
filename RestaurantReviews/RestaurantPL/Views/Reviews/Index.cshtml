@@ -1,51 +1,33 @@
 ﻿@model IEnumerable<RestaurantBusiness.Review>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Reviews";
 }
 
-<h2>Index</h2>
+<h2>All Reviews</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.restaurantId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.reviewer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.comments)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rating)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.restaurantId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.reviewer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.comments)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rating)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
-
+<table class="table table-bordered table-striped" id="restaurants">
+    <thead class="thead-light"><tr><th>Restaurant:</th><th>Reviewer:</th><th>Rating:</th><th>Comments:</th></tr></thead>
+    <tbody>
+        @foreach (RestaurantBusiness.Review item in ViewBag.reviews)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Restaurant.name, "Details", new { id = item.id })
+                </td>
+                <td>
+                    @item.reviewer
+                </td>
+                <td>
+                    @item.rating
+                </td>
+                <td>
+                    @item.comments
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

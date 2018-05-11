@@ -258,6 +258,8 @@
     <Content Include="Views\Reviews\Edit.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />
     <Content Include="Views\Reviews\Details.cshtml" />
+    <Content Include="Views\Reviews\Create.cshtml" />
+    <Content Include="Views\Reviews\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -278,10 +280,6 @@
     <ProjectReference Include="..\RestaurantBusiness\RestaurantBusiness.csproj">
       <Project>{2f9e851b-7c65-48de-b457-54aa5895b538}</Project>
       <Name>RestaurantBusiness</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RestaurantDL\RestaurantDL.csproj">
-      <Project>{b5cc7849-966a-4e4a-95a9-358d9c1442a0}</Project>
-      <Name>RestaurantDL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
